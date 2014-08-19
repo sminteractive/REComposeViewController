@@ -156,6 +156,7 @@
 {
     _rootViewController = controller;
     [controller addChildViewController:self];
+    self.view.frame = controller.view.bounds;
     [controller.view addSubview:self.view];
     [self didMoveToParentViewController:controller];
 }
@@ -178,7 +179,7 @@
         
         NSInteger verticalOffset = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 316 : 216;
         
-        NSInteger containerHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? _containerView.frame.size.height : _containerView.frame.size.height;
+        NSInteger containerHeight = _containerView.frame.size.height;
         frame.origin.y = (height - verticalOffset - containerHeight) / 2;
         if (frame.origin.y < 20) frame.origin.y = 20;
         _containerView.frame = frame;
